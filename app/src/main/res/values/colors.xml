@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3D525B</color>
+    <color name="colorPrimaryDark">#4F727F</color>
+    <color name="colorAccent">#a6808d</color>
+
+    <color name="blueAccentGradientStart">#363d6e</color>
+    <color name="blueAccentGradientCenter">#3e4680</color>
+    <color name="blueAccentGradientEnd">#363d6e</color>
+    <color name="blueAccentBorder">#1c2039</color>
+
+    <color name="blueGradientStart">#363d6e</color>
+    <color name="blueGradientCenter">#3e4680</color>
+    <color name="blueGradientEnd">#363d6e</color>
+    <color name="bluePrimaryBorder">#1c2039</color>
+
+    <color name="colorDisabledStart">#AAA</color>
+    <color name="colorDisabledBorder">#444</color>
+</resources>

@@ -1,0 +1,323 @@
+<resources>
+    <string name="app_name">House Points</string>
+    <string name="title_activity_splash">House Points</string>
+    <string name="title_activity_point_settings">"  Manage Points"</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Point Threshold settings -->
+    <string name="pref_header_points_threshold">Point Thresholds</string>
+
+    <string name="pref_title_dessert_threshold">Choose threshold for dessert category</string>
+    <string-array name="pref_dessert_threshold_titles">
+        <item>1 Point</item>
+        <item>2 Points</item>
+        <item>3 Points</item>
+        <item>4 Points</item>
+        <item>5 Points</item>
+        <item>6 Points</item>
+        <item>7 Points</item>
+        <item>8 Points</item>
+        <item>9 Points</item>
+        <item>10 Points</item>
+        <item>11 Points</item>
+        <item>12 Points</item>
+        <item>13 Points</item>
+        <item>14 Points</item>
+        <item>15 Points</item>
+        <item>16 Points</item>
+        <item>17 Points</item>
+        <item>18 Points</item>
+        <item>19 Points</item>
+        <item>20 Points</item>
+    </string-array>
+    <string-array name="pref_dessert_threshold_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+
+
+    <string name="pref_title_phone_threshold">Choose threshold for phone category</string>
+    <string-array name="pref_phone_threshold_titles">
+        <item>1 Point</item>
+        <item>2 Points</item>
+        <item>3 Points</item>
+        <item>4 Points</item>
+        <item>5 Points</item>
+        <item>6 Points</item>
+        <item>7 Points</item>
+        <item>8 Points</item>
+        <item>9 Points</item>
+        <item>10 Points</item>
+        <item>11 Points</item>
+        <item>12 Points</item>
+        <item>13 Points</item>
+        <item>14 Points</item>
+        <item>15 Points</item>
+        <item>16 Points</item>
+        <item>17 Points</item>
+        <item>18 Points</item>
+        <item>19 Points</item>
+        <item>20 Points</item>
+    </string-array>
+    <string-array name="pref_phone_threshold_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+
+    <string name="pref_title_xBox_threshold">Choose threshold for XBox category</string>
+    <string-array name="pref_xBox_threshold_titles">
+        <item>1 Point</item>
+        <item>2 Points</item>
+        <item>3 Points</item>
+        <item>4 Points</item>
+        <item>5 Points</item>
+        <item>6 Points</item>
+        <item>7 Points</item>
+        <item>8 Points</item>
+        <item>9 Points</item>
+        <item>10 Points</item>
+        <item>11 Points</item>
+        <item>12 Points</item>
+        <item>13 Points</item>
+        <item>14 Points</item>
+        <item>15 Points</item>
+        <item>16 Points</item>
+        <item>17 Points</item>
+        <item>18 Points</item>
+        <item>19 Points</item>
+        <item>20 Points</item>
+    </string-array>
+    <string-array name="pref_xBox_threshold_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+
+    <!-- Point Cost settings -->
+    <string name="pref_header_points_cost">Point Costs</string>
+
+    <string name="pref_title_disobeying_cost">Choose multiplier for Disobeying</string>
+    <string-array name="pref_disobeying_cost_titles">
+        <item>1X</item>
+        <item>2X</item>
+        <item>3X</item>
+        <item>4X</item>
+        <item>5X</item>
+        <item>6X</item>
+        <item>7X</item>
+        <item>8X</item>
+        <item>9X</item>
+        <item>10X</item>
+    </string-array>
+    <string-array name="pref_disobeying_cost_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+
+    <string name="pref_title_lying_cost">Choose multiplier for Lying</string>
+    <string-array name="pref_lying_cost_titles">
+        <item>1X</item>
+        <item>2X</item>
+        <item>3X</item>
+        <item>4X</item>
+        <item>5X</item>
+        <item>6X</item>
+        <item>7X</item>
+        <item>8X</item>
+        <item>9X</item>
+        <item>10X</item>
+    </string-array>
+    <string-array name="pref_lying_cost_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <!-- Punishment Duration settings -->
+    <string name="pref_header_punishment_duration">Punishment Durations</string>
+
+    <string name="pref_title_disobeying_duration">Choose punishment duration for Disobeying</string>
+    <string-array name="pref_disobeying_duration_titles">
+        <item>1 day</item>
+        <item>2 days</item>
+        <item>3 days</item>
+        <item>4 days</item>
+        <item>5 days</item>
+        <item>6 days</item>
+        <item>1 week</item>
+        <item>8 days</item>
+        <item>9 days</item>
+        <item>10 days</item>
+        <item>11 days</item>
+        <item>12 days</item>
+        <item>13 days</item>
+        <item>2 weeks</item>
+        <item>3 weeks</item>
+        <item>4 weeks</item>
+        <item>5 weeks</item>
+    </string-array>
+    <string-array name="pref_disobeying_duration_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>21</item>
+        <item>28</item>
+        <item>35</item>
+    </string-array>
+
+    <string name="pref_title_lying_duration">Choose punishment duration for Lying</string>
+    <string-array name="pref_lying_duration_titles">
+        <item>1 day</item>
+        <item>2 days</item>
+        <item>3 days</item>
+        <item>4 days</item>
+        <item>5 days</item>
+        <item>6 days</item>
+        <item>1 week</item>
+        <item>8 days</item>
+        <item>9 days</item>
+        <item>10 days</item>
+        <item>11 days</item>
+        <item>12 days</item>
+        <item>13 days</item>
+        <item>2 weeks</item>
+        <item>3 weeks</item>
+        <item>4 weeks</item>
+        <item>5 weeks</item>
+    </string-array>
+    <string-array name="pref_lying_duration_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>21</item>
+        <item>28</item>
+        <item>35</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="manage_points_button_text">Manage\nPoints</string>
+
+</resources>

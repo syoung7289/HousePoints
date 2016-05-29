@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splashPageContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <RelativeLayout
+                android:id="@+id/dessertContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/dessertImage"
+                    android:src="@drawable/dessert"
+                    android:background="@android:color/holo_red_light"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:cropToPadding="true"
+                    android:adjustViewBounds="true"/>
+
+                <ImageView
+                    android:id="@+id/dessertStatus"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/status_states"/>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dessertProgress"
+                    android:indeterminate="false"
+                    android:maxHeight="20dp"
+                    android:minHeight="20dp"
+                    android:minWidth="150dp"
+                    android:maxWidth="200dp"
+                    android:progressDrawable="@drawable/red_progress"
+                    android:layout_marginBottom="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/phoneContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/phoneImage"
+                    android:src="@drawable/phone"
+                    android:background="@android:color/holo_blue_light"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:cropToPadding="true"
+                    android:adjustViewBounds="true"/>
+
+                <ImageView
+                    android:id="@+id/phoneStatus"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/status_states"/>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/phoneProgress"
+                    android:indeterminate="false"
+                    android:maxHeight="20dp"
+                    android:minHeight="20dp"
+                    android:minWidth="150dp"
+                    android:maxWidth="200dp"
+                    android:progressDrawable="@drawable/red_progress"
+                    android:layout_marginBottom="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <RelativeLayout
+                android:id="@+id/xBoxContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/xBoxImage"
+                    android:src="@drawable/xbox"
+                    android:background="@android:color/holo_green_light"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:cropToPadding="true"
+                    android:adjustViewBounds="true"/>
+
+                <ImageView
+                    android:id="@+id/xBoxStatus"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/status_states"/>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/xBoxProgress"
+                    android:indeterminate="false"
+                    android:maxHeight="20dp"
+                    android:minHeight="20dp"
+                    android:minWidth="150dp"
+                    android:maxWidth="200dp"
+                    android:progressDrawable="@drawable/red_progress"
+                    android:layout_marginBottom="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/roomContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/roomImage"
+                    android:src="@drawable/room"
+                    android:background="@android:color/holo_purple"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:cropToPadding="true"
+                    android:adjustViewBounds="true"/>
+
+                <ImageView
+                    android:id="@+id/roomStatus"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/status_states"/>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/roomProgress"
+                    android:indeterminate="false"
+                    android:maxHeight="20dp"
+                    android:minHeight="20dp"
+                    android:minWidth="150dp"
+                    android:maxWidth="200dp"
+                    android:progressDrawable="@drawable/red_progress"
+                    android:layout_marginBottom="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
+
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/house_points_button"
+        android:textAppearance="@style/ButtonMediumFontStyle"
+        android:textColor="#FFF"
+        android:padding="10dp"
+        android:onClick="showManagePoints"
+        android:text="@string/manage_points_button_text"/>
+
+</RelativeLayout>

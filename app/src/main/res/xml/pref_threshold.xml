@@ -1,0 +1,30 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="2"
+        android:entries="@array/pref_dessert_threshold_titles"
+        android:entryValues="@array/pref_dessert_threshold_values"
+        android:key="dessert_threshold"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_dessert_threshold" />
+
+    <ListPreference
+        android:defaultValue="3"
+        android:entries="@array/pref_phone_threshold_titles"
+        android:entryValues="@array/pref_phone_threshold_values"
+        android:key="phone_threshold"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_phone_threshold" />
+
+    <ListPreference
+        android:defaultValue="8"
+        android:entries="@array/pref_xBox_threshold_titles"
+        android:entryValues="@array/pref_xBox_threshold_values"
+        android:key="xBox_threshold"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_xBox_threshold" />
+
+</PreferenceScreen>
