@@ -1,0 +1,21 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.scyoung.housepoints.preference.InfractionReliefListPreference
+        android:dialogTitle="@string/select_points_to_pardon"
+        android:key="bulk_pardon"
+        android:summary=""
+        android:negativeButtonText="@string/pref_dialog_neg_pardon_points"
+        android:positiveButtonText="@string/pref_dialog_pos_pardon_points"
+        android:title="@string/provide_relief"
+        android:defaultValue="@array/empty_array"/>
+
+    <com.scyoung.housepoints.preference.InfractionCompleteListPreference
+        android:dialogTitle="@string/select_points_to_delete"
+        android:key="bulk_delete"
+        android:summary=""
+        android:negativeButtonText="@string/pref_dialog_neg_delete_points"
+        android:positiveButtonText="@string/pref_dialog_pos_delete_points"
+        android:title="@string/all_points_log"
+        android:defaultValue="@array/empty_array"/>
+
+</PreferenceScreen>

@@ -9,9 +9,12 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Surface;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.scyoung.housepoints.util.HousePointsUtil;
@@ -29,6 +32,7 @@ public class Splash extends AppCompatActivity {
 
     private ProgressBar[] progressBars = new ProgressBar[4];
     private ImageView[] statuses = new ImageView[4];
+    private RelativeLayout[] durationContainers = new RelativeLayout[4];
     private SharedPreferences prefs;
 
     @Override
@@ -41,7 +45,7 @@ public class Splash extends AppCompatActivity {
         getSupportActionBar().hide();
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        //flushPreviousTestData();
+//        flushPreviousTestData();
         generateTestData();
 
     }
@@ -50,7 +54,8 @@ public class Splash extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         Map<String, ?> allEntries = prefs.getAll();
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-            if (entry.getKey().split("~")[0].contains("ACTIVE")) {
+            String status = entry.getKey().split("~")[0];
+            if (status.contains("ACTIVE")) {
                 editor.remove(entry.getKey());
             }
         }
@@ -60,8 +65,10 @@ public class Splash extends AppCompatActivity {
     private void generateTestData() {
         String[] infractions = new String[] {"LYING", "DISOBEYING", "LYING"};
         int[] points = new int[] {1, 2, 2};
+        int counter = 0;
         SharedPreferences.Editor editor = prefs.edit();
         for (int i=0; i < infractions.length; i++) {
+            counter++;
             try {
                 TimeUnit.MILLISECONDS.sleep(100);
             }
@@ -70,7 +77,8 @@ public class Splash extends AppCompatActivity {
             }
             String dateNow = HousePointsUtil.getFormatter().format(new Date());
             for (int j=1; j <= points[i]; j++) {
-                String key = "ACTIVE~This is infraction number " + j + "~" + dateNow + "~" + j;
+                String key = "ACTIVE~" + dateNow + "~This is infraction number " + counter + "~" + j;
+
                 editor.putString(key, infractions[i]);
             }
         }
@@ -84,6 +92,10 @@ public class Splash extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        refreshStatuses(null);
+    }
+
+    public void refreshStatuses(View view) {
         initStatusIndicators();
         setStatusIndicators();
     }
@@ -93,18 +105,26 @@ public class Splash extends AppCompatActivity {
         progressBars[0].setMax(Integer.parseInt(prefs.getString("dessert_threshold", "2")));
         statuses[0] = (ImageView)findViewById(R.id.dessertStatus);
         statuses[0].setActivated(false);
+        durationContainers[0] = (RelativeLayout)findViewById(R.id.dessertDurationContainer);
+        durationContainers[0].setVisibility(View.INVISIBLE);
         progressBars[1] = (ProgressBar)findViewById(R.id.phoneProgress);
         progressBars[1].setMax(Integer.parseInt(prefs.getString("phone_threshold", "3")));
         statuses[1] = (ImageView)findViewById(R.id.phoneStatus);
         statuses[1].setActivated(false);
+        durationContainers[1] = (RelativeLayout)findViewById(R.id.phoneDurationContainer);
+        durationContainers[1].setVisibility(View.INVISIBLE);
         progressBars[2] = (ProgressBar)findViewById(R.id.xBoxProgress);
         progressBars[2].setMax(Integer.parseInt(prefs.getString("xBox_threshold", "8")));
         statuses[2] = (ImageView)findViewById(R.id.xBoxStatus);
         statuses[2].setActivated(false);
+        durationContainers[2] = (RelativeLayout)findViewById(R.id.xBoxDurationContainer);
+        durationContainers[2].setVisibility(View.INVISIBLE);
         progressBars[3] = (ProgressBar)findViewById(R.id.roomProgress);
         progressBars[3].setMax(prefs.getInt("roomProgress", 100));
         statuses[3] = (ImageView)findViewById(R.id.roomStatus);
         statuses[3].setActivated(false);
+        durationContainers[3] = (RelativeLayout)findViewById(R.id.roomDurationContainer);
+        durationContainers[3].setVisibility(View.INVISIBLE);
     }
 
     private void setStatusIndicators() {
@@ -116,11 +136,37 @@ public class Splash extends AppCompatActivity {
             progressBars[i].setProgress(tierPoints);
             housePoints -= tierPoints;
             statuses[i].setActivated(tierPoints > 0);
+            setDurationStatus(durationContainers[i], tierPoints, progressBars[i].getMax());
         }
     }
 
     public void showManagePoints(View view) {
         Intent intent = new Intent(this, PointSettings.class);
         startActivity(intent);
+    }
+
+    public void setDurationStatus(RelativeLayout durationContainer, int tierPoints, int tierMax) {
+        if (tierPoints > 0 && (tierPoints < tierMax || tierPoints == 100) && HousePointsUtil.nextPointCount > 0) {
+            durationContainer.setVisibility(View.VISIBLE);
+            String nextPointCount = String.valueOf(HousePointsUtil.nextPointCount);
+            ((TextView) durationContainer.getChildAt(0)).setText(nextPointCount);
+            String durationText = "";
+            if (HousePointsUtil.nextPointHour > 0) {
+                durationText = HousePointsUtil.nextPointHour + "hr";
+                if (HousePointsUtil.nextPointHour != 1) {
+                    durationText = durationText + "s ";
+                }
+            }
+            if (HousePointsUtil.nextPointMinute == 0 && HousePointsUtil.nextPointHour == 0) {
+                durationText = "<1 min";
+            }
+            else {
+                durationText = durationText + HousePointsUtil.nextPointMinute + " min";
+                if (HousePointsUtil.nextPointMinute != 1) {
+                    durationText = durationText + "s";
+                }
+            }
+            ((TextView) durationContainer.getChildAt(2)).setText(durationText);
+        }
     }
 }
