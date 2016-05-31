@@ -27,6 +27,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.scyoung.housepoints.Splash" />
         </activity>
+        <activity
+            android:name=".PasscodeActivity"
+            android:label="@string/title_activity_passcode"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

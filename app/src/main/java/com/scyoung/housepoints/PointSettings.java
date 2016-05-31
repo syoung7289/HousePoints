@@ -2,8 +2,10 @@ package com.scyoung.housepoints;
 
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -20,6 +22,8 @@ import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+
+import com.scyoung.housepoints.preference.PasscodeSwitchPreference;
 
 import java.util.List;
 
@@ -172,11 +176,70 @@ public class PointSettings extends AppCompatPreferenceActivity {
      */
     protected boolean isValidFragment(String fragmentName) {
         return PreferenceFragment.class.getName().equals(fragmentName)
+                || AdminPreferenceFragment.class.getName().equals(fragmentName)
                 || PointThresholdFragment.class.getName().equals(fragmentName)
                 || PointCostFragment.class.getName().equals(fragmentName)
                 || PunishmentDurationFragment.class.getName().equals(fragmentName)
                 || HousePointsFragment.class.getName().equals(fragmentName)
                 || NotificationPreferenceFragment.class.getName().equals(fragmentName);
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static class AdminPreferenceFragment extends PreferenceFragment {
+        private static final int PASSCODE_RESULT = 0;
+        private SharedPreferences prefs;
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_admin);
+            setHasOptionsMenu(true);
+            prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+
+            findPreference("admin_restriction").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    Intent i = new Intent(getActivity(), PasscodeActivity.class);
+                    startActivityForResult(i, PASSCODE_RESULT);
+                    return true;
+                }
+            });
+
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            int id = item.getItemId();
+            if (id == android.R.id.home && !isXLargeTablet(getActivity())) {
+                startActivity(new Intent(getActivity(), PasscodeActivity.class));
+                return true;
+            }
+            return super.onOptionsItemSelected(item);
+        }
+
+        @Override
+        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            switch(requestCode) {
+                case (PASSCODE_RESULT) : {
+                    if (resultCode == Activity.RESULT_OK) {
+                        boolean passcodeSuccess = data.getBooleanExtra(getResources().getString(R.string.passcode_success), false);
+                        int passcodeAction = data.getIntExtra(getResources().getString(R.string.passcode_action), 99);
+                        PasscodeSwitchPreference psPref = (PasscodeSwitchPreference)findPreference("admin_restriction");
+                        if (passcodeSuccess && passcodeAction == PasscodeActivity.SET) {
+                            psPref.setChecked(true);
+                        }
+                        else if (passcodeSuccess && passcodeAction == PasscodeActivity.VERIFY) {
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.remove("user_passcode").commit();
+                            psPref.setChecked(false);
+                        }
+                    }
+                    break;
+                }
+            }
+        }
     }
 
     /**

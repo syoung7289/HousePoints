@@ -1,9 +1,11 @@
 package com.scyoung.housepoints;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +36,7 @@ public class Splash extends AppCompatActivity {
     private ImageView[] statuses = new ImageView[4];
     private RelativeLayout[] durationContainers = new RelativeLayout[4];
     private SharedPreferences prefs;
+    private static final int PASSCODE_RESULT = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,8 +144,31 @@ public class Splash extends AppCompatActivity {
     }
 
     public void showManagePoints(View view) {
-        Intent intent = new Intent(this, PointSettings.class);
-        startActivity(intent);
+        if (isPasscodeSet()) {
+            Intent i = new Intent(this, PasscodeActivity.class);
+            startActivityForResult(i, PASSCODE_RESULT);
+        }
+        else {
+            Intent intent = new Intent(this, PointSettings.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case (PASSCODE_RESULT) : {
+                if (resultCode == Activity.RESULT_OK) {
+                    boolean passcodeSuccess = data.getBooleanExtra(getResources().getString(R.string.passcode_success), false);
+                    if (passcodeSuccess) {
+                        Intent intent = new Intent(this, PointSettings.class);
+                        startActivity(intent);
+                    }
+                }
+                break;
+            }
+        }
     }
 
     public void setDurationStatus(RelativeLayout durationContainer, int tierPoints, int tierMax) {
@@ -168,5 +194,13 @@ public class Splash extends AppCompatActivity {
             }
             ((TextView) durationContainer.getChildAt(2)).setText(durationText);
         }
+    }
+
+    private boolean isPasscodeSet() {
+        boolean isSet = false;
+        if (prefs != null) {
+            isSet = !(prefs.getString("user_passcode", "")).isEmpty();
+        }
+        return isSet;
     }
 }

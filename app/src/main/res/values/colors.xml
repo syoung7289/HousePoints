@@ -16,4 +16,6 @@
 
     <color name="colorDisabledStart">#AAA</color>
     <color name="colorDisabledBorder">#444</color>
+
+    <color name="colorSecondaryRed">#C00000</color>
 </resources>

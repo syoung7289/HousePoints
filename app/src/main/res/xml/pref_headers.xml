@@ -2,6 +2,12 @@
 
     <!-- These settings headers are only used on tablets. -->
 
+
+    <header
+        android:fragment="com.scyoung.housepoints.PointSettings$AdminPreferenceFragment"
+        android:icon="@drawable/administrator_24"
+        android:title="@string/pref_header_admin" />
+
     <header
         android:fragment="com.scyoung.housepoints.PointSettings$PointThresholdFragment"
         android:icon="@drawable/beaker_24"

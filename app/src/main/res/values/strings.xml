@@ -329,5 +329,16 @@
     <string name="pref_dialog_pos_delete_points">Delete Points</string>
     <string name="pref_dialog_neg_delete_points">Cancel</string>
     <string-array name="empty_array"></string-array>
+    <string name="title_activity_passcode">PasscodeActivity</string>
+    <string name="enter_passcode">Enter your Passcode</string>
+    <string name="passcodes_dont_match">Passcodes do not match</string>
+    <string name="passcode_action">passcode_action</string>
+    <string name="passcode_success">passcode_set_result</string>
+    <string name="passcode_doesnt_match">Passcode does not match saved passcode</string>
+    <string name="reenter_passcode">Verify your Passcode</string>
+    <string name="pref_header_admin">Admin Settings</string>
+    <string name="pref_title_admin_restrictions">Admin Restrictions</string>
+    <string name="pref_summary_admin_restrictions">Create passcode to secure data</string>
+    <string name="pref_summary_admin_set">Passcode set</string>
 
 </resources>
