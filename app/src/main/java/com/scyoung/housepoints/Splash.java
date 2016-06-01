@@ -58,7 +58,7 @@ public class Splash extends AppCompatActivity {
         Map<String, ?> allEntries = prefs.getAll();
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
             String status = entry.getKey().split("~")[0];
-            if (status.contains("ACTIVE")) {
+            if (status.contains("ACTIVE") || status.contains("PARDON") || status.contains("MISSING")) {
                 editor.remove(entry.getKey());
             }
         }
@@ -110,24 +110,28 @@ public class Splash extends AppCompatActivity {
         statuses[0].setActivated(false);
         durationContainers[0] = (RelativeLayout)findViewById(R.id.dessertDurationContainer);
         durationContainers[0].setVisibility(View.INVISIBLE);
+        ((RelativeLayout)durationContainers[0].getParent()).setOnClickListener(null);
         progressBars[1] = (ProgressBar)findViewById(R.id.phoneProgress);
         progressBars[1].setMax(Integer.parseInt(prefs.getString("phone_threshold", "3")));
         statuses[1] = (ImageView)findViewById(R.id.phoneStatus);
         statuses[1].setActivated(false);
         durationContainers[1] = (RelativeLayout)findViewById(R.id.phoneDurationContainer);
         durationContainers[1].setVisibility(View.INVISIBLE);
+        ((RelativeLayout)durationContainers[1].getParent()).setOnClickListener(null);
         progressBars[2] = (ProgressBar)findViewById(R.id.xBoxProgress);
         progressBars[2].setMax(Integer.parseInt(prefs.getString("xBox_threshold", "8")));
         statuses[2] = (ImageView)findViewById(R.id.xBoxStatus);
         statuses[2].setActivated(false);
         durationContainers[2] = (RelativeLayout)findViewById(R.id.xBoxDurationContainer);
         durationContainers[2].setVisibility(View.INVISIBLE);
+        ((RelativeLayout)durationContainers[2].getParent()).setOnClickListener(null);
         progressBars[3] = (ProgressBar)findViewById(R.id.roomProgress);
         progressBars[3].setMax(prefs.getInt("roomProgress", 100));
         statuses[3] = (ImageView)findViewById(R.id.roomStatus);
         statuses[3].setActivated(false);
         durationContainers[3] = (RelativeLayout)findViewById(R.id.roomDurationContainer);
         durationContainers[3].setVisibility(View.INVISIBLE);
+        ((RelativeLayout)durationContainers[3].getParent()).setOnClickListener(null);
     }
 
     private void setStatusIndicators() {
@@ -193,6 +197,12 @@ public class Splash extends AppCompatActivity {
                 }
             }
             ((TextView) durationContainer.getChildAt(2)).setText(durationText);
+            ((RelativeLayout)durationContainer.getParent()).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    refreshStatuses(v);
+                }
+            });
         }
     }
 

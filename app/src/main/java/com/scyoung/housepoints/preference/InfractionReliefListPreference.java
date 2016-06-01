@@ -37,8 +37,10 @@ public class InfractionReliefListPreference extends MultiSelectListPreference {
                 String[] prefArray = entry.getKey().split("~");
                 if (prefArray[0].equals("ACTIVE") && prefArray[3].equals("1")) {
                     Date logged = HousePointsUtil.parseDateString(prefArray[1]);
+                    Date expires = HousePointsUtil.determineDateByInfraction(logged, (String)entry.getValue(), prefs, true);
                     uniqueMap.put(prefArray[0] + "~" + prefArray[1] + "~" + prefArray[2],
-                            "\n" + prefArray[2] + "\n\t Logged: " + formatter.format(logged));
+                            "\n" + prefArray[2] + "\n\t Logged: " + formatter.format(logged) +
+                            "\n\t Expires: " + formatter.format(expires));
                 }
             }
         }

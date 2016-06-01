@@ -340,5 +340,12 @@
     <string name="pref_title_admin_restrictions">Admin Restrictions</string>
     <string name="pref_summary_admin_restrictions">Create passcode to secure data</string>
     <string name="pref_summary_admin_set">Passcode set</string>
+    <string name="add_missing_assignments">Add Missing Assignments</string>
+    <string name="enter_new_assignment">Enter assignment (Ex. \"English - Book Report\")</string>
+    <string name="missing_assignments">Missing Assignments</string>
+    <string name="select_assignments_to_delete">Select Assignment that have been completed</string>
+    <string name="completed_assignments">Completed Assignments</string>
+    <string name="pref_dialog_pos_delete_assignments">Delete Assignments</string>
+    <string name="pref_dialog_neg_delete_assignments">Cancel</string>
 
 </resources>

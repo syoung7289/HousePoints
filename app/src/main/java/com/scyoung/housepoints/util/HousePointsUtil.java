@@ -13,7 +13,7 @@ import java.util.Map;
  * Created by scyoung on 5/29/16.
  */
 public class HousePointsUtil {
-    public static SimpleDateFormat formatter;
+    private static SimpleDateFormat formatter;
     public static int nextPointCount = 0;
     public static long nextPointHour = 9999999999l;
     public static long nextPointMinute = 99999999999l;
@@ -45,13 +45,8 @@ public class HousePointsUtil {
         boolean isWithin;
         try {
             Date createDate = getFormatter().parse(createDateString);
-            int duration = Integer.parseInt(prefs.getString(infraction + "_duration", "7"));
             int cost = Integer.parseInt(prefs.getString(infraction, "1"));
-//            Calendar cal = GregorianCalendar.getInstance();
-//            cal.add(Calendar.DAY_OF_YEAR, -(duration));
-            Calendar cal = GregorianCalendar.getInstance();
-            cal.add(Calendar.MINUTE, -(duration));
-            Date todayMinusDuration = cal.getTime();
+            Date todayMinusDuration = determineDateByInfraction(null, infraction, prefs, false);
             isWithin = createDate.after(todayMinusDuration);
             if (isWithin) {
                 findNextPointToExpire(createDate, todayMinusDuration, cost);
@@ -90,6 +85,24 @@ public class HousePointsUtil {
         editor.commit();
     }
 
+    public static Date determineDateByInfraction(Date compareDate, String infractionType,
+                                                 SharedPreferences prefs, boolean addDays) {
+        int duration = Integer.parseInt(prefs.getString(infractionType + "_duration", "7"));
+//            Calendar cal = GregorianCalendar.getInstance();
+//            cal.add(Calendar.DAY_OF_YEAR, -(duration));
+        Calendar cal = GregorianCalendar.getInstance();
+        if (compareDate != null) {
+            cal.setTime(compareDate);
+        }
+        if (addDays) {
+            cal.add(Calendar.MINUTE, (duration));
+        }
+        else {
+            cal.add(Calendar.MINUTE, -(duration));
+        }
+        return cal.getTime();
+    }
+
     public static SimpleDateFormat getFormatter() {
         if (formatter == null) {
             formatter  = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
@@ -107,4 +120,5 @@ public class HousePointsUtil {
         }
         return date;
     }
+
 }

@@ -47,6 +47,12 @@ public class PasscodeActivity extends AppCompatActivity {
         initPasscode();
     }
 
+    @Override
+    protected void onStop() {
+        this.finish();
+        super.onStop();
+    }
+
     public void cancelPasscodeProcessing(View view) {
         setPreference(false, "");
     }

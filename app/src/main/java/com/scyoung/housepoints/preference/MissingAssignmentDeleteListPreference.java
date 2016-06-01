@@ -16,10 +16,10 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-public class InfractionCompleteListPreference extends MultiSelectListPreference {
+public class MissingAssignmentDeleteListPreference extends MultiSelectListPreference {
     private SharedPreferences prefs;
 
-    public InfractionCompleteListPreference(Context context, AttributeSet attributes) {
+    public MissingAssignmentDeleteListPreference(Context context, AttributeSet attributes) {
         super(context, attributes);
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
         setValues(new HashSet<String>());
@@ -27,18 +27,15 @@ public class InfractionCompleteListPreference extends MultiSelectListPreference 
 
     @Override
     protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
-        HousePointsUtil.getActiveHousePoints(prefs);
         SortedMap<String, String> uniqueMap = new TreeMap<>();
         Map<String, ?> allEntries = prefs.getAll();
         SimpleDateFormat formatter = new SimpleDateFormat("M/d '@' h:mm a");
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-            if (entry.getKey().contains("~")) {
+            if (entry.getKey().contains("MISSING~")) {
                 String[] prefArray = entry.getKey().split("~");
-                if (prefArray.length > 3 && prefArray[3].equals("1")) {
-                    Date logged = HousePointsUtil.parseDateString(prefArray[1]);
-                    uniqueMap.put(prefArray[0] + "~" + prefArray[1] + "~" + prefArray[2],
-                            "\n" + prefArray[2] + "\n\t \'" + prefArray[0] + "\' Logged: " + formatter.format(logged));
-                }
+                Date logged = HousePointsUtil.parseDateString(prefArray[1]);
+                uniqueMap.put(prefArray[0] + "~" + prefArray[1],
+                        "\n" + entry.getValue() + "\n\t" +  "Logged: " + formatter.format(logged));
             }
         }
         setEntries(uniqueMap.values().toArray(new CharSequence[]{}));
