@@ -307,6 +307,32 @@
         <item>-1</item>
     </string-array>
 
+    <string-array name="infraction_values">
+        <item>Disobeying</item>
+        <item>Lying</item>
+    </string-array>
+    <string-array name="infraction_keys">
+        <item>DISOBEYING</item>
+        <item>LYING</item>
+    </string-array>
+
+    <string-array name="num_point_values">
+        <item>Add 1 Point</item>
+        <item>Add 2 Points</item>
+        <item>Add 3 Points</item>
+        <item>Add 4 Points</item>
+        <item>Add 5 Points</item>
+        <item>Add 6 Points</item>
+    </string-array>
+    <string-array name="num_point_keys">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
     <!-- Example settings for Notifications -->
@@ -347,5 +373,13 @@
     <string name="completed_assignments">Completed Assignments</string>
     <string name="pref_dialog_pos_delete_assignments">Delete Assignments</string>
     <string name="pref_dialog_neg_delete_assignments">Cancel</string>
+    <string name="pref_dialog_neg_add_points">Cancel</string>
+    <string name="pref_dialog_pos_add_points">Add Points</string>
+    <string name="add_points">Add Points</string>
+    <string name="pref_dialog_message_add_points">Add Points</string>
+    <string name="pref_dialog_title_add_points">Select Point Options</string>
+    <string name="infraction_type_label">Select Point Type</string>
+    <string name="add_points_label">Number of Points</string>
+    <string name="point_description">Reason for Points</string>
 
 </resources>

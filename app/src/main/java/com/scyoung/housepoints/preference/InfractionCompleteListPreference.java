@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 
 import com.scyoung.housepoints.util.HousePointsUtil;
+import com.scyoung.housepoints.util.StringUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,10 +35,13 @@ public class InfractionCompleteListPreference extends MultiSelectListPreference 
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
             if (entry.getKey().contains("~")) {
                 String[] prefArray = entry.getKey().split("~");
-                if (prefArray.length > 3 && prefArray[3].equals("1")) {
+                if (prefArray.length > 3) {
+                    String infraction = StringUtil.convertToTitleCase((String)entry.getValue());
                     Date logged = HousePointsUtil.parseDateString(prefArray[1]);
-                    uniqueMap.put(prefArray[0] + "~" + prefArray[1] + "~" + prefArray[2],
-                            "\n" + prefArray[2] + "\n\t \'" + prefArray[0] + "\' Logged: " + formatter.format(logged));
+                    uniqueMap.put(prefArray[0] + "~" + prefArray[1] + "~" + prefArray[2] + "~" + prefArray[3],
+                            "\n" +prefArray[2] +
+                            "\n\t'" + infraction + "\'" +
+                            "\n\t\t \'" + prefArray[0] + "\' Logged: " + formatter.format(logged));
                 }
             }
         }

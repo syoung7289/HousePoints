@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#FFF">
+
+    <TextView
+        android:id="@+id/infraction_type_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/infraction_type_label"/>
+    <Spinner
+        android:id="@+id/infraction_type_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:entryValues="@array/infraction_keys"
+        android:entries="@array/infraction_values"
+        android:layout_below="@id/infraction_type_label" />
+
+    <TextView
+        android:id="@+id/num_points_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/infraction_type_spinner"
+        android:text="@string/add_points_label"/>
+    <Spinner
+        android:id="@+id/num_points"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entryValues="@array/num_point_keys"
+        android:entries="@array/num_point_values"
+        android:spinnerMode="dropdown"
+        android:layout_below="@+id/num_points_label" />
+
+    <TextView
+        android:id="@+id/point_description_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/num_points"
+        android:text="@string/point_description"/>
+    <EditText
+        android:id="@+id/point_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/point_description_label"/>
+
+</RelativeLayout>

@@ -1,5 +1,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <com.scyoung.housepoints.preference.AddPointsDialogPreference
+        android:dialogMessage="@string/pref_dialog_message_add_points"
+        android:dialogTitle="@string/pref_dialog_title_add_points"
+        android:negativeButtonText="@string/pref_dialog_neg_add_points"
+        android:positiveButtonText="@string/pref_dialog_pos_add_points"
+        android:key="add_points"
+        android:dialogLayout="@layout/add_points"
+        android:title="@string/add_points"/>
+
     <com.scyoung.housepoints.preference.InfractionReliefListPreference
         android:dialogTitle="@string/select_points_to_pardon"
         android:key="bulk_pardon"

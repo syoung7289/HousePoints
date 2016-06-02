@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 
 import com.scyoung.housepoints.util.HousePointsUtil;
+import com.scyoung.housepoints.util.StringUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,11 +37,14 @@ public class InfractionReliefListPreference extends MultiSelectListPreference {
             if (entry.getKey().contains("~")) {
                 String[] prefArray = entry.getKey().split("~");
                 if (prefArray[0].equals("ACTIVE") && prefArray[3].equals("1")) {
+                    String infraction = StringUtil.convertToTitleCase((String)entry.getValue());
                     Date logged = HousePointsUtil.parseDateString(prefArray[1]);
                     Date expires = HousePointsUtil.determineDateByInfraction(logged, (String)entry.getValue(), prefs, true);
                     uniqueMap.put(prefArray[0] + "~" + prefArray[1] + "~" + prefArray[2],
-                            "\n" + prefArray[2] + "\n\t Logged: " + formatter.format(logged) +
-                            "\n\t Expires: " + formatter.format(expires));
+                            "\n" + prefArray[2] +
+                            "\n\t\'" + infraction + "\'" +
+                            "\n\t\t Logged: " + formatter.format(logged) +
+                            "\n\t\t Expires: " + formatter.format(expires));
                 }
             }
         }

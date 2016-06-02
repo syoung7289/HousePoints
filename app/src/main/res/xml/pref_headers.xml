@@ -1,12 +1,15 @@
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- These settings headers are only used on tablets. -->
-
+    <header
+        android:fragment="com.scyoung.housepoints.PointSettings$HousePointsFragment"
+        android:icon="@drawable/points_24"
+        android:title="@string/pref_header_house_points" />
 
     <header
-        android:fragment="com.scyoung.housepoints.PointSettings$AdminPreferenceFragment"
-        android:icon="@drawable/administrator_24"
-        android:title="@string/pref_header_admin" />
+        android:fragment="com.scyoung.housepoints.PointSettings$MissingAssignmentFragment"
+        android:icon="@drawable/question_24"
+        android:title="@string/missing_assignments" />
 
     <header
         android:fragment="com.scyoung.housepoints.PointSettings$PointThresholdFragment"
@@ -24,19 +27,13 @@
         android:title="@string/pref_header_punishment_duration" />
 
     <header
-        android:fragment="com.scyoung.housepoints.PointSettings$HousePointsFragment"
-        android:icon="@drawable/points_24"
-        android:title="@string/pref_header_house_points" />
-
-    <header
-        android:fragment="com.scyoung.housepoints.PointSettings$MissingAssignmentFragment"
-        android:icon="@drawable/question_24"
-        android:title="@string/missing_assignments" />
+        android:fragment="com.scyoung.housepoints.PointSettings$AdminPreferenceFragment"
+        android:icon="@drawable/administrator_24"
+        android:title="@string/pref_header_admin" />
 
     <header
         android:fragment="com.scyoung.housepoints.PointSettings$NotificationPreferenceFragment"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/pref_header_notifications" />
-
 
 </preference-headers>

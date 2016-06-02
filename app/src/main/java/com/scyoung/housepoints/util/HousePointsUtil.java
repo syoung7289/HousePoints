@@ -121,4 +121,17 @@ public class HousePointsUtil {
         return date;
     }
 
+    public static int getNumberOfMissingAssignments(SharedPreferences prefs) {
+        int numAssignments = 0;
+        Map<String, ?> allEntries = prefs.getAll();
+        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+            if (entry.getKey().contains("~")) {
+                String[] varArray = entry.getKey().split("~");
+                if ("MISSING".equals(varArray[0])) {
+                    numAssignments++;
+                }
+            }
+        }
+        return numAssignments;
+    }
 }

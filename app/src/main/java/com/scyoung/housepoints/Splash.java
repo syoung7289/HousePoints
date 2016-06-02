@@ -49,7 +49,7 @@ public class Splash extends AppCompatActivity {
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 //        flushPreviousTestData();
-        generateTestData();
+//        generateTestData();
 
     }
 
@@ -132,6 +132,7 @@ public class Splash extends AppCompatActivity {
         durationContainers[3] = (RelativeLayout)findViewById(R.id.roomDurationContainer);
         durationContainers[3].setVisibility(View.INVISIBLE);
         ((RelativeLayout)durationContainers[3].getParent()).setOnClickListener(null);
+        findViewById(R.id.assignmentMessageContainer).setVisibility(View.INVISIBLE);
     }
 
     private void setStatusIndicators() {
@@ -144,6 +145,19 @@ public class Splash extends AppCompatActivity {
             housePoints -= tierPoints;
             statuses[i].setActivated(tierPoints > 0);
             setDurationStatus(durationContainers[i], tierPoints, progressBars[i].getMax());
+        }
+        setMissingAssignmentStatus();
+    }
+
+    private void setMissingAssignmentStatus() {
+        int numAssignments = HousePointsUtil.getNumberOfMissingAssignments(prefs);
+        if (numAssignments > 0) {
+            String missingMessage = "missing assignment";
+            findViewById(R.id.assignmentMessageContainer).setVisibility(View.VISIBLE);
+            ((TextView)findViewById(R.id.missingAssignmentNum)).setText(String.valueOf(numAssignments));
+            missingMessage += numAssignments != 1 ? "s" : "";
+            ((TextView)findViewById(R.id.missingAssignmentSuffix)).setText(missingMessage);
+            findViewById(R.id.roomStatus).setActivated(true);
         }
     }
 
