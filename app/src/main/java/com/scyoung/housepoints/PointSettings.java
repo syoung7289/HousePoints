@@ -39,6 +39,7 @@ import java.util.List;
  * API Guide</a> for more information on developing a Settings UI.
  */
 public class PointSettings extends AppCompatPreferenceActivity {
+    private SharedPreferences prefs;
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
@@ -124,12 +125,15 @@ public class PointSettings extends AppCompatPreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
         setupActionBar();
     }
 
     @Override
     protected void onStop() {
-        this.finish();
+        if (!prefs.getBoolean("passcode_changing", false)) {
+            this.finish();
+        }
         super.onStop();
     }
 
@@ -207,6 +211,7 @@ public class PointSettings extends AppCompatPreferenceActivity {
             findPreference("admin_restriction").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    prefs.edit().putBoolean("passcode_changing", true).commit();
                     Intent i = new Intent(getActivity(), PasscodeActivity.class);
                     startActivityForResult(i, PASSCODE_RESULT);
                     return true;

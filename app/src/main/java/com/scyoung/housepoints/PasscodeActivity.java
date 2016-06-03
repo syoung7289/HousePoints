@@ -49,6 +49,7 @@ public class PasscodeActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
+        prefs.edit().remove("passcode_changing").commit();
         this.finish();
         super.onStop();
     }
