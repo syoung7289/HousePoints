@@ -88,17 +88,16 @@ public class HousePointsUtil {
     public static Date determineDateByInfraction(Date compareDate, String infractionType,
                                                  SharedPreferences prefs, boolean addDays) {
         int duration = Integer.parseInt(prefs.getString(infractionType + "_duration", "7"));
-//            Calendar cal = GregorianCalendar.getInstance();
-//            cal.add(Calendar.DAY_OF_YEAR, -(duration));
         Calendar cal = GregorianCalendar.getInstance();
         if (compareDate != null) {
             cal.setTime(compareDate);
         }
-        if (addDays) {
-            cal.add(Calendar.MINUTE, (duration));
+        int multiplier = addDays ? 1 : -1;
+        if (prefs.getBoolean("testing_mode", false)) {
+            cal.add(Calendar.MINUTE, (multiplier * duration));
         }
         else {
-            cal.add(Calendar.MINUTE, -(duration));
+            cal.add(Calendar.DAY_OF_YEAR, (multiplier * duration));
         }
         return cal.getTime();
     }

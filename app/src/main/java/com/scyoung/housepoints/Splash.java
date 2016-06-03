@@ -139,12 +139,16 @@ public class Splash extends AppCompatActivity {
         int housePoints = HousePointsUtil.getActiveHousePoints(prefs);
         Log.d("housePoints", String.valueOf(housePoints));
         Toast.makeText(this, "Current House Points: " + housePoints, Toast.LENGTH_LONG).show();
+        boolean isSet = false;
         for (int i=0; i<progressBars.length; i++) {
             int tierPoints = Math.min(housePoints, progressBars[i].getMax());
             progressBars[i].setProgress(tierPoints);
             housePoints -= tierPoints;
             statuses[i].setActivated(tierPoints > 0);
-            setDurationStatus(durationContainers[i], tierPoints, progressBars[i].getMax());
+            if (!isSet) {
+                isSet = setDurationStatus(durationContainers[i], tierPoints,
+                        progressBars[i].getMax(), housePoints);
+            }
         }
         setMissingAssignmentStatus();
     }
@@ -189,8 +193,13 @@ public class Splash extends AppCompatActivity {
         }
     }
 
-    public void setDurationStatus(RelativeLayout durationContainer, int tierPoints, int tierMax) {
-        if (tierPoints > 0 && (tierPoints < tierMax || tierPoints == 100) && HousePointsUtil.nextPointCount > 0) {
+    public boolean setDurationStatus(RelativeLayout durationContainer,
+                                     int tierPoints,
+                                     int tierMax,
+                                     int remainingPoints) {
+        boolean hasSet = false;
+        if ((remainingPoints == 0 || tierPoints == 100) &&
+                HousePointsUtil.nextPointCount > 0) {
             durationContainer.setVisibility(View.VISIBLE);
             String nextPointCount = String.valueOf(HousePointsUtil.nextPointCount);
             ((TextView) durationContainer.getChildAt(0)).setText(nextPointCount);
@@ -217,7 +226,9 @@ public class Splash extends AppCompatActivity {
                     refreshStatuses(v);
                 }
             });
+            hasSet = true;
         }
+        return hasSet;
     }
 
     private boolean isPasscodeSet() {

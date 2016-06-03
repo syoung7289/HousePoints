@@ -7,4 +7,11 @@
         android:summaryOff="@string/pref_summary_admin_restrictions"
         android:summaryOn="@string/pref_summary_admin_set"/>
 
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="testing_mode"
+        android:title="Testing Mode"
+        android:summaryOff="Will force durations to minutes rather than hours for easier testing"
+        android:summaryOn="On"/>
+
 </PreferenceScreen>
